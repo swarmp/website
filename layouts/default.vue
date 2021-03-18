@@ -2,6 +2,7 @@
   <v-app>
     <app-bar />
     <app-nav />
+    <app-settings />
     <v-main>
       <nuxt />
     </v-main>

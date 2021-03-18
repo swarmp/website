@@ -10,9 +10,10 @@
               <v-col
                 v-for="(member, i) of members"
                 :key="i"
-                cols="6"
-                sm="4"
-                md="3"
+                cols="12"
+                sm="6"
+                md="4"
+                lg="3"
                 xl="2"
               >
                 <v-card outlined :to="member.path" hover nuxt>

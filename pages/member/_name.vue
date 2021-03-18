@@ -19,6 +19,9 @@
               <v-list-item-content>
                 <v-list-item-title>
                   {{ member.name }}
+                  <span class="text--secondary">
+                    {{ member.realname }}
+                  </span>
                 </v-list-item-title>
                 <v-list-item-subtitle>
                   {{ member.motto }}

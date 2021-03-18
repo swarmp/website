@@ -33,5 +33,6 @@ $size: 60vmin;
 .logo {
   max-width: $size;
   max-height: $size;
+  margin: max(-5vmin, -64px);
 }
 </style>

@@ -3,6 +3,7 @@ import pathify, { make } from 'vuex-pathify'
 
 export const state = () => ({
   showNavDrawer: false,
+  showSettingsDrawer: false,
 })
 
 type RootState = ReturnType<typeof state>

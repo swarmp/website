@@ -2,5 +2,7 @@
 # The '*' pattern is global owners.
 # Order is important. The last matching pattern has the most precedence.
 
+*                           @swarmp/core
+
 /content/member/zzisu.md    @zzisu
 /content/member/skylee.md   @skylee03

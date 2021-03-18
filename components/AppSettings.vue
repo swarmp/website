@@ -15,6 +15,7 @@
       </v-btn>
     </v-toolbar>
     <v-divider />
+    <app-settings-theme />
   </v-navigation-drawer>
 </template>
 

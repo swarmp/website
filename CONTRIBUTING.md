@@ -1,11 +1,22 @@
 ## Example workflow
-1. Switch to a new branch `${type}/${description}`
+
+1. Switch to a new branch `type/description`.
+   - `type` is one of Commit Types.
+   - `description` is a short description in kebab-case.
+   - example: `chore/update-readme`.
 2. Commit some code. Please use [conventional commit message](https://conventionalcommits.org/).
+   - use lowercase for description.
+   - example: `chore: update readme`.
 3. Create a PR. Please follow [semantic pull request](https://github.com/zeke/semantic-pull-requests) guidelines.
-4. PR must be reviewed before merge.
-5. Prefer squash merge.
+   - use lowercase for description.
+   - example: `chore: update readme`.
+   - **notice**: semantic pull request is required and checked for merge.
+     Both the PR title **and** the commit message must follow this guide.
+4. PR review is required for merge.
+5. Make a squash merge.
 
 ## Commit Types (Also PR Types)
+
 - `feat`: A new feature
 - `fix`: A bug fix
 - `docs`: Documentation only changes

@@ -70,7 +70,7 @@ import Vue from 'vue'
 import gravatar from 'gravatar'
 import { mdiEmail, mdiTranslate, mdiWebClock } from '@mdi/js'
 import { IMemberInfo } from '~/common/types'
-import { proxyGravatar } from '~/common/statically'
+import { img } from '~/common/statically'
 
 export default Vue.extend({
   name: 'Members',
@@ -93,7 +93,7 @@ export default Vue.extend({
   },
   methods: {
     getAvatarUrl(email: string) {
-      return proxyGravatar(gravatar.url(email))
+      return img(gravatar.url(email))
     },
   },
 })

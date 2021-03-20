@@ -1,5 +1,5 @@
 <template>
-  <v-card class="text-center">
+  <v-card class="text-center" v-bind="cardAttrs">
     <v-icon size="96px">{{ mdiAlertCircleOutline }}</v-icon>
     <v-card-text>
       <span class="text-h4">An error occurred</span>
@@ -30,6 +30,13 @@ export default Vue.extend({
     return {
       mdiAlertCircleOutline,
     }
+  },
+  computed: {
+    cardAttrs() {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { error, ...others } = this.$attrs
+      return others
+    },
   },
 })
 </script>

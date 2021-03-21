@@ -47,7 +47,7 @@
                 </code>
               </div>
               <v-spacer />
-              <v-btn outlined>
+              <v-btn outlined :href="githubUrl" target="_blank">
                 <v-icon left v-text="mdiGithub" />
                 Edit on github
               </v-btn>
@@ -83,6 +83,17 @@ export default Vue.extend({
     return {
       title: this.post.title + ' - Blog',
     }
+  },
+  computed: {
+    githubUrl() {
+      return (
+        'https://github.com/swarmp/website/blob/' +
+        BUILD.git.hash +
+        '/content' +
+        this.post.path +
+        this.post.extension
+      )
+    },
   },
 })
 </script>

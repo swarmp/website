@@ -2,64 +2,76 @@
   <v-container>
     <v-row>
       <v-col cols="12">
-        <v-card>
-          <v-card-title>Members</v-card-title>
-          <v-divider />
-          <v-card-text>
-            <v-row>
-              <v-col
-                v-for="(member, i) of members"
-                :key="i"
-                cols="12"
-                sm="6"
-                md="4"
-                lg="3"
-                xl="2"
-              >
-                <v-card outlined :to="member.path" hover nuxt>
-                  <v-list-item>
-                    <v-list-item-avatar>
-                      <v-img :src="getAvatarUrl(member.email)" />
-                    </v-list-item-avatar>
-                    <v-list-item-content>
-                      <v-list-item-title>
-                        {{ member.name }}
-                      </v-list-item-title>
-                      <v-list-item-subtitle>
-                        {{ member.realname }}
-                      </v-list-item-subtitle>
-                    </v-list-item-content>
-                    <v-list-item-action>
-                      <v-list-item-action-text>
-                        {{ member.role }}
-                      </v-list-item-action-text>
-                    </v-list-item-action>
-                  </v-list-item>
-                  <v-divider />
-                  <v-card-text>
-                    {{ member.motto }}
-                  </v-card-text>
-                  <v-divider v-if="metas.some((m) => m.prop in member)" />
-                  <v-list dense class="pa-0">
-                    <v-list-item
-                      v-for="(meta, j) of metas.filter((m) => m.prop in member)"
-                      :key="j"
-                    >
-                      <v-list-item-icon>
-                        <v-icon v-text="meta.icon" />
-                      </v-list-item-icon>
-                      <v-list-item-content class="text-right">
-                        <v-list-item-title class="text-caption">
-                          {{ member[meta.prop] }}
+        <template v-if="$fetchState.pending">
+          <v-card>
+            <v-skeleton-loader type="article" />
+          </v-card>
+        </template>
+        <template v-else-if="$fetchState.error">
+          <app-error-card :error="$fetchState.error" @reload="$fetch" />
+        </template>
+        <template v-else>
+          <v-card>
+            <v-card-title>Members</v-card-title>
+            <v-divider />
+            <v-card-text>
+              <v-row>
+                <v-col
+                  v-for="(member, i) of members"
+                  :key="i"
+                  cols="12"
+                  sm="6"
+                  md="4"
+                  lg="3"
+                  xl="2"
+                >
+                  <v-card outlined :to="member.path" hover nuxt>
+                    <v-list-item>
+                      <v-list-item-avatar>
+                        <v-img :src="getAvatarUrl(member.email)" />
+                      </v-list-item-avatar>
+                      <v-list-item-content>
+                        <v-list-item-title>
+                          {{ member.name }}
                         </v-list-item-title>
+                        <v-list-item-subtitle>
+                          {{ member.realname }}
+                        </v-list-item-subtitle>
                       </v-list-item-content>
+                      <v-list-item-action>
+                        <v-list-item-action-text>
+                          {{ member.role }}
+                        </v-list-item-action-text>
+                      </v-list-item-action>
                     </v-list-item>
-                  </v-list>
-                </v-card>
-              </v-col>
-            </v-row>
-          </v-card-text>
-        </v-card>
+                    <v-divider />
+                    <v-card-text>
+                      {{ member.motto }}
+                    </v-card-text>
+                    <v-divider v-if="metas.some((m) => m.prop in member)" />
+                    <v-list dense class="pa-0">
+                      <v-list-item
+                        v-for="(meta, j) of metas.filter(
+                          (m) => m.prop in member
+                        )"
+                        :key="j"
+                      >
+                        <v-list-item-icon>
+                          <v-icon v-text="meta.icon" />
+                        </v-list-item-icon>
+                        <v-list-item-content class="text-right">
+                          <v-list-item-title class="text-caption">
+                            {{ member[meta.prop] }}
+                          </v-list-item-title>
+                        </v-list-item-content>
+                      </v-list-item>
+                    </v-list>
+                  </v-card>
+                </v-col>
+              </v-row>
+            </v-card-text>
+          </v-card>
+        </template>
       </v-col>
     </v-row>
   </v-container>

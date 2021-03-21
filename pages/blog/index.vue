@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col cols="12">
-        <v-card flat>
+        <v-card flat color="transparent">
           <v-card-title>Blog Posts</v-card-title>
           <v-divider />
         </v-card>
@@ -22,18 +22,17 @@
       <template v-else>
         <v-col v-for="(post, i) of posts" :key="i" cols="12">
           <v-card hover :to="post.path" nuxt>
-            <v-card-title>{{ post.title }}</v-card-title>
-            <v-divider />
-            <div class="pa-1">
-              <v-chip small label>
+            <v-card-title>
+              <div>{{ post.title }}</div>
+              <v-spacer />
+              <v-chip small label class="pl-2 pr-1">
                 <v-icon left v-text="mdiClockOutline" />
-                {{ new Date(post.createdAt).toLocaleString() }}
+                {{ new Date(post.createdAt).toLocaleDateString() }}
               </v-chip>
-              <v-chip small label>
-                <v-icon left v-text="mdiPencil" />
-                {{ new Date(post.updatedAt).toLocaleString() }}
-              </v-chip>
-              <template v-if="post.tags">
+            </v-card-title>
+            <template v-if="post.tags">
+              <v-divider />
+              <div class="pa-1">
                 <v-chip
                   v-for="(tag, j) of post.tags"
                   :key="j"
@@ -44,8 +43,8 @@
                   <v-icon left v-text="mdiLabel" />
                   {{ tag }}
                 </v-chip>
-              </template>
-            </div>
+              </div>
+            </template>
             <v-divider />
             <v-card-text>{{ post.description }}</v-card-text>
           </v-card>
@@ -57,7 +56,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { mdiClockOutline, mdiPencil, mdiLabel } from '@mdi/js'
+import { mdiClockOutline, mdiLabel } from '@mdi/js'
 import { IBlogPost } from '~/common/types'
 
 export default Vue.extend({
@@ -65,7 +64,6 @@ export default Vue.extend({
   data: () => ({
     posts: [] as IBlogPost[],
     mdiClockOutline,
-    mdiPencil,
     mdiLabel,
   }),
   async fetch() {

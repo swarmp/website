@@ -47,7 +47,13 @@ const config: NuxtConfig = {
       lang: 'en',
     },
   },
-  content: {},
+  content: {
+    markdown: {
+      prism: {
+        theme: '~/styles/prism.scss',
+      },
+    },
+  },
   vuetify: {
     customVariables: ['~/styles/variables.scss'],
     treeShake: true,
